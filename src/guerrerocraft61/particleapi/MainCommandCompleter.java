@@ -3,7 +3,7 @@ package guerrerocraft61.particleapi;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+import java.util.Objects;
 
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -28,19 +28,19 @@ public class MainCommandCompleter implements TabCompleter {
 		if (args.length > 1) {
 			if (args[0].equals("pointparticle")) {
 				Player player = (Player) sender;
-				Block targ = player.getTargetBlock((Set<Material>) null, 5);
+				Block targ = player.getTargetBlock(null, 5);
 				switch (args.length) {
-				case 1:
-					return Collections.singletonList(targ.getX() + "");
 				case 2:
-					return Collections.singletonList(targ.getY() + "");
+					return Collections.singletonList(targ.getX() + "");
 				case 3:
+					return Collections.singletonList(targ.getY() + "");
+				case 4:
 					return Collections.singletonList(targ.getZ() + "");
 				}
 				return null;
 			} else if (args[0].equals("twopointparticle")) {
 				Player player = (Player) sender;
-				Block targ = player.getTargetBlock((Set<Material>) null, 5);
+				Block targ = player.getTargetBlock(null, 5);
 				switch (args.length) {
 				case 2:
 				case 5:
@@ -54,7 +54,9 @@ public class MainCommandCompleter implements TabCompleter {
 				case 8:
 					return particleList();
 				case 9:
-					return numberList();
+					List<String> count = new ArrayList<>();
+					count.add("Count");
+					return count;
 				case 10:
 					List<String> x = new ArrayList<>();
 					x.add("offSetX");
@@ -69,120 +71,88 @@ public class MainCommandCompleter implements TabCompleter {
 					return z;
 				case 13:
 					List<String> speed = new ArrayList<>();
-					speed.add("speed");
+					speed.add("Speed");
 					return speed;
 				case 14:
 					List<String> forceShow = new ArrayList<>();
 					forceShow.add("true");
 					forceShow.add("false");
-					forceShow.add("forceShow");
+					forceShow.add("ForceShow");
 					return forceShow;
 				case 15:
 					List<String> movementSpeed = new ArrayList<>();
 					movementSpeed.add("movementSpeed");
 					return movementSpeed;
+				case 16:
+					switch (args[9]) {
+					case "BLOCK_CRACK":
+					case "BLOCK_DUST":
+						return blockList();
+					case "ITEM_CRACK":
+						return itemList();
+					case "REDSTONE":
+						List<String> colorRed = numberList();
+						colorRed.add("RedColor");
+						return colorRed;
+					}
+				case 17:
+					if (args[9].equals("REDSTONE")) {
+						List<String> colorGreen = numberList();
+						colorGreen.add("GreenColor1-255");
+						return colorGreen;
+					}
+				case 18:
+					if (args[9].equals("REDSTONE")) {
+						List<String> colorBlue = numberList();
+						colorBlue.add("BlueColor1-255");
+						return colorBlue;
+					}
+				case 19:
+					if (args[9].equals("REDSTONE")) {
+						List<String> colorBlue = numberList();
+						colorBlue.add("Size");
+						return colorBlue;
+					}
 				}
 				return null;
 			}
-
 		}
 		return null;
 	}
 
 	public List<String> particleList() {
 		List<String> stringList = new ArrayList<>();
-		for (Object string : Particle.class.getEnumConstants()) {
-			stringList.add(string.toString());
+		for (Object object : Particle.class.getEnumConstants()) {
+			stringList.add(object.toString());
 		}
 		return stringList;
-		/*String[] particles = new String[] {
-				"ASH",
-				"BARRIER"
-				"BLOCK_CRACK"
-				"BLOCK_DUST"
-				"BUBBLE_COLUMN_UP"
-				"BUBBLE_POP"
-				"CAMPFIRE_COSY_SMOKE"
-				"CAMPFIRE_SIGNAL_SMOKE"
-				"CLOUD"
-				"COMPOSTER"
-				"CRIMSON_SPORE"
-				"CRIT"
-				"CRIT_MAGIC"
-				"CURRENT_DOWN"
-				"DAMAGE_INDICATOR"
-				"DOLPHIN"
-				"DRAGON_BREATH"
-				"DRIP_LAVA"
-				"DRIP_WATER"
-				"DRIPPING_HONEY"
-				"DRIPPING_OBSIDIAN_TEAR"
-				"ENCHANTMENT_TABLE"
-				"END_ROD"
-				"EXPLOSION_HUGE"
-				"EXPLOSION_LARGE"
-				"EXPLOSION_NORMAL"
-				"FALLING_DUST"
-				"FALLING_HONEY"
-				"FALLING_LAVA"
-				"FALLING_NECTAR"
-				"FALLING_OBSIDIAN_TEAR"
-				"FALLING_WATER"
-				"FIREWORKS_SPARK"
-				"FLAME"
-				"FLASH"
-				"HEART"
-				"ITEM_CRACK"
-				"LANDING_HONEY"
-				LANDING_LAVA
-				LANDING_OBSIDIAN_TEAR
-				LAVA
-				LEGACY_BLOCK_CRACK
-				LEGACY_BLOCK_DUST
-				LEGACY_FALLING_DUST
-				MOB_APPEARANCE
-				NAUTILUS
-				NOTE
-				PORTAL
-				REDSTONE
-				REVERSE_PORTAL
-				SLIME
-				SMOKE_LARGE
-				SMOKE_NORMAL
-				SNEEZE
-				SNOW_SHOVEL
-				SNOWBALL
-				SOUL
-				SOUL_FIRE_FLAME
-				SPELL
-				SPELL_INSTANT
-				SPELL_MOB
-				SPELL_MOB_AMBIENT
-				SPELL_WITCH
-				SPIT
-				SQUID_INK
-				SUSPENDED
-				SUSPENDED_DEPTH
-				SWEEP_ATTACK
-				TOTEM
-				TOWN_AURA
-				VILLAGER_ANGRY
-				VILLAGER_HAPPY
-				WARPED_SPORE
-				WATER_BUBBLE
-				WATER_DROP
-				WATER_SPLASH
-				WATER_WAKE
-				WHITE_ASH
-		}*/
+	}
+
+	public List<String> blockList() {
+		List<String> stringList = new ArrayList<>();
+		for (Object object : Material.class.getEnumConstants()) {
+			if (Objects.requireNonNull(Material.getMaterial(object.toString())).isBlock()) {
+				stringList.add(object.toString());
+			}
+		}
+		return stringList;
+	}
+
+	public List<String> itemList() {
+		List<String> stringList = new ArrayList<>();
+		for (Object object : Material.class.getEnumConstants()) {
+			if (Objects.requireNonNull(Material.getMaterial(object.toString())).isItem()) {
+				stringList.add(object.toString());
+			}
+		}
+		return stringList;
 	}
 
 	private List<String> numberList() {
 		List<String> stringList = new ArrayList<>();
-		for (int string : new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 }) {
-			stringList.add(Integer.toString(string));
+		for (int i = 0; i < 255; i++) {
+			stringList.add(Integer.toString(i));
 		}
-		stringList.add("count");
 		return stringList;
 	}
 

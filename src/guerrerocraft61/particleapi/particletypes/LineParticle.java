@@ -1,11 +1,19 @@
 package guerrerocraft61.particleapi.particletypes;
 
+import java.util.Objects;
+
+import javax.annotation.Nullable;
+
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import guerrerocraft61.particleapi.Formatter;
 import guerrerocraft61.particleapi.ParticleAPI;
 import guerrerocraft61.particleapi.VectorMath;
 
@@ -20,6 +28,9 @@ public class LineParticle {
 	public double speed;
 	public long movementSpeed;
 	public boolean forceShow;
+	public String materialName;
+	public Color particleColor;
+	public int size;
 
 	/**
 	 * Default offset = 0
@@ -41,7 +52,7 @@ public class LineParticle {
 	 * Default speed = 0.01
 	 * Default forceShow = false
 	 * Default movementSpeed = 0
-	 *
+	 * 
 	 * @param a        The first location
 	 * @param b        The second location
 	 * @param particle Particle type
@@ -59,7 +70,7 @@ public class LineParticle {
 	/**
 	 * Default forceShow = false
 	 * Default movementSpeed = 0
-	 *
+	 * 
 	 * @param a        The first location
 	 * @param b        The second location
 	 * @param particle Particle type
@@ -77,7 +88,7 @@ public class LineParticle {
 
 	/**
 	 * Default movementSpeed = 0
-	 *
+	 * 
 	 * @param a         The first location
 	 * @param b         The second location
 	 * @param particle  Particle type
@@ -97,7 +108,7 @@ public class LineParticle {
 
 	/**
 	 * Default forceShow = false
-	 *
+	 * 
 	 * @param a             The first location
 	 * @param b             The second location
 	 * @param particle      Particle type
@@ -116,7 +127,7 @@ public class LineParticle {
 
 	/**
 	 * Default speed = 0.01
-	 *
+	 * 
 	 * @param a             The first location
 	 * @param b             The second location
 	 * @param particle      Particle type
@@ -137,7 +148,7 @@ public class LineParticle {
 	/**
 	 * Default speed = 0.01
 	 * Default forceShow = false
-	 *
+	 * 
 	 * @param a             The first location
 	 * @param b             The second location
 	 * @param particle      Particle type
@@ -156,7 +167,7 @@ public class LineParticle {
 	/**
 	 * Default speed = 0.01
 	 * Default movementSpeed = 0
-	 *
+	 * 
 	 * @param a         The first location
 	 * @param b         The second location
 	 * @param particle  Particle type
@@ -175,7 +186,7 @@ public class LineParticle {
 
 	/**
 	 * Default offset = 0
-	 *
+	 * 
 	 * @param a             The first location
 	 * @param b             The second location
 	 * @param particle      Particle type
@@ -194,7 +205,7 @@ public class LineParticle {
 	/**
 	 * Default offset = 0
 	 * Default movementSpeed = 0
-	 *
+	 * 
 	 * @param a         The first location
 	 * @param b         The second location
 	 * @param particle  Particle type
@@ -211,7 +222,7 @@ public class LineParticle {
 	/**
 	 * Default offset = 0
 	 * Default forceShow = false
-	 *
+	 * 
 	 * @param a             The first location
 	 * @param b             The second location
 	 * @param particle      Particle type
@@ -227,7 +238,7 @@ public class LineParticle {
 	/**
 	 * Default offset = 0
 	 * Default speed = 0.01
-	 *
+	 * 
 	 * @param a             The first location
 	 * @param b             The second location
 	 * @param particle      Particle type
@@ -245,7 +256,7 @@ public class LineParticle {
 	 * Default offset = 0
 	 * Default forceShow = false
 	 * Default movementSpeed = 0
-	 *
+	 * 
 	 * @param a        The first location
 	 * @param b        The second location
 	 * @param particle Particle type
@@ -261,7 +272,7 @@ public class LineParticle {
 	 * Default offset = 0
 	 * Default speed = 0.01
 	 * Default forceShow = false
-	 *
+	 * 
 	 * @param a             The first location
 	 * @param b             The second location
 	 * @param particle      Particle type
@@ -277,7 +288,7 @@ public class LineParticle {
 	 * Default offset = 0
 	 * Default speed = 0.01
 	 * Default movementSpeed = 0
-	 *
+	 * 
 	 * @param a         The first location
 	 * @param b         The second location
 	 * @param particle  Particle type
@@ -291,8 +302,6 @@ public class LineParticle {
 	}
 
 	/**
-	 * 
-	 *
 	 * @param a             The first location
 	 * @param b             The second location
 	 * @param particle      Particle type
@@ -309,6 +318,130 @@ public class LineParticle {
 			double offsetZ, double speed, boolean forceShow, long movementSpeed) {
 		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, speed, forceShow, movementSpeed);
 		spawnParticle();
+	}
+
+	/**
+	 * If you don't know how to use this, use the block/item/redstone method
+	 * 
+	 * @param a             The first location
+	 * @param b             The second location
+	 * @param particle      Particle type
+	 * @param count         Particle count
+	 * @param offsetX       The maximum random offset on the X axis
+	 * @param offsetY       The maximum random offset on the Y axis
+	 * @param offsetZ       The maximum random offset on the Z axis
+	 * @param speed         Every particle speed
+	 * @param forceShow     Show particle when the player is far (256 blocks max.)
+	 *                      and when player have minimal particle settings
+	 * @param movementSpeed The speed in tick to spawn every particle
+	 * @param data          This is used at block/item particles to set data and
+	 *                      at redstone particle to set color
+	 */
+	public <T> LineParticle(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
+			double offsetZ, double speed, boolean forceShow, long movementSpeed, @Nullable T data) {
+		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, speed, forceShow, movementSpeed);
+		spawnParticle();
+	}
+
+	/**
+	 * @param a             The first location
+	 * @param b             The second location
+	 * @param particle      Particle type
+	 * @param count         Particle count
+	 * @param offsetX       The maximum random offset on the X axis
+	 * @param offsetY       The maximum random offset on the Y axis
+	 * @param offsetZ       The maximum random offset on the Z axis
+	 * @param speed         Every particle speed
+	 * @param forceShow     Show particle when the player is far (256 blocks max.)
+	 *                      and when player have minimal particle settings
+	 * @param movementSpeed The speed in tick to spawn every particle
+	 * @param materialName  The material name
+	 * @apiNote This is used for Block/Item Particles
+	 */
+	public LineParticle(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
+			double offsetZ, double speed, boolean forceShow, long movementSpeed, String materialName) {
+		if (particle == Particle.BLOCK_CRACK || particle == Particle.BLOCK_DUST || particle == Particle.ITEM_CRACK) {
+			setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, speed, forceShow, movementSpeed);
+			this.materialName = materialName;
+			double initialDistance = getA().distance(getB());
+			Vector direction = VectorMath.directionVector(this.a, this.b);
+			BlockData bd = null;
+			ItemStack is = null;
+			if (particle == Particle.BLOCK_CRACK || particle == Particle.BLOCK_DUST) {
+				bd = Objects.requireNonNull(Material.getMaterial(getMaterialName())).createBlockData();
+			} else {
+				is = new ItemStack(Objects.requireNonNull(Material.getMaterial(getMaterialName())));
+			}
+			BlockData finalBd = bd;
+			ItemStack finalIs = is;
+			new BukkitRunnable() {
+				public void run() {
+					ParticleAPI.debug("Initial: " + initialDistance);
+					ParticleAPI.debug("a/b distance: " + getA().distance(getB()));
+					if (getA().distance(getB()) < 1 || getA().distance(getB()) > initialDistance) {
+						cancel();
+					}
+					if (particle == Particle.BLOCK_CRACK || particle == Particle.BLOCK_DUST) {
+						getA().getWorld().spawnParticle(getParticle(), getA(), getCount(), getOffsetX(), getOffsetY(),
+								getOffsetZ(), getSpeed(), finalBd, isForceShow());
+					} else {
+						getA().getWorld().spawnParticle(getParticle(), getA(), getCount(), getOffsetX(), getOffsetY(),
+								getOffsetZ(), getSpeed(), finalIs, isForceShow());
+					}
+					double x = direction.getX();
+					double y = direction.getY();
+					double z = direction.getZ();
+					getA().add(x, y, z);
+				}
+			}.runTaskTimer(ParticleAPI.getPlugin(), 0, getMovementSpeed());
+		} else {
+			ParticleAPI.consoleMsg(Formatter.FText(particle.toString() + "&c&l is not a Block Particle"));
+		}
+	}
+
+	/**
+	 * @param a             The first location
+	 * @param b             The second location
+	 * @param particle      Particle type
+	 * @param count         Particle count
+	 * @param offsetX       The maximum random offset on the X axis
+	 * @param offsetY       The maximum random offset on the Y axis
+	 * @param offsetZ       The maximum random offset on the Z axis
+	 * @param speed         Every particle speed
+	 * @param forceShow     Show particle when the player is far (256 blocks max.)
+	 *                      and when player have minimal particle settings
+	 * @param movementSpeed The speed in tick to spawn every particle
+	 * @param color         The redstone dust color
+	 * @param size          The redstone dust size
+	 * @apiNote This is used for Redstone Particle
+	 */
+	public LineParticle(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
+			double offsetZ, double speed, boolean forceShow, long movementSpeed, Color color, int size) {
+		if (particle == Particle.REDSTONE) {
+			setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, speed, forceShow, movementSpeed);
+			this.particleColor = color;
+			this.size = size;
+			double initialDistance = getA().distance(getB());
+			Vector direction = VectorMath.directionVector(this.a, this.b);
+			new BukkitRunnable() {
+				public void run() {
+					ParticleAPI.debug("Initial: " + initialDistance);
+					ParticleAPI.debug("a/b distance: " + getA().distance(getB()));
+					if (getA().distance(getB()) < 1 || getA().distance(getB()) > initialDistance) {
+						cancel();
+					}
+					getA().getWorld().spawnParticle(getParticle(), getA(), getCount(), getOffsetX(), getOffsetY(),
+							getOffsetZ(), getSpeed(), new Particle.DustOptions(getParticleColor(), getSize()),
+							isForceShow());
+					double x = direction.getX();
+					double y = direction.getY();
+					double z = direction.getZ();
+					getA().add(x, y, z);
+				}
+			}.runTaskTimer(ParticleAPI.getPlugin(), 0, getMovementSpeed());
+		} else {
+			ParticleAPI.consoleMsg(Formatter.FText(particle.toString() + "&c&l is not a Block Particle"));
+		}
 	}
 
 	private void setVariables(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
@@ -342,7 +475,7 @@ public class LineParticle {
 					cancel();
 				}
 				getA().getWorld().spawnParticle(getParticle(), getA(), getCount(), getOffsetX(), getOffsetY(),
-						getOffsetZ(), getSpeed(), Material.GRASS_BLOCK.createBlockData(), isForceShow());
+						getOffsetZ(), getSpeed(), null, isForceShow());
 				double x = direction.getX();
 				double y = direction.getY();
 				double z = direction.getZ();
@@ -351,43 +484,55 @@ public class LineParticle {
 		}.runTaskTimer(ParticleAPI.getPlugin(), 0, getMovementSpeed());
 	}
 
-	public Location getA() {
+	private Location getA() {
 		return a;
 	}
 
-	public Location getB() {
+	private Location getB() {
 		return b;
 	}
 
-	public Particle getParticle() {
+	private Particle getParticle() {
 		return particle;
 	}
 
-	public int getCount() {
+	private int getCount() {
 		return count;
 	}
 
-	public double getOffsetX() {
+	private double getOffsetX() {
 		return offsetX;
 	}
 
-	public double getOffsetY() {
+	private double getOffsetY() {
 		return offsetY;
 	}
 
-	public double getOffsetZ() {
+	private double getOffsetZ() {
 		return offsetZ;
 	}
 
-	public double getSpeed() {
+	private double getSpeed() {
 		return speed;
 	}
 
-	public long getMovementSpeed() {
+	private long getMovementSpeed() {
 		return movementSpeed;
 	}
 
-	public boolean isForceShow() {
+	private boolean isForceShow() {
 		return forceShow;
+	}
+
+	private String getMaterialName() {
+		return materialName;
+	}
+
+	private Color getParticleColor() {
+		return particleColor;
+	}
+
+	private int getSize() {
+		return size;
 	}
 }

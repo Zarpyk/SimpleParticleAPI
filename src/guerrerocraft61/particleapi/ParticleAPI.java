@@ -3,7 +3,6 @@ package guerrerocraft61.particleapi;
 import java.util.Objects;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ParticleAPI extends JavaPlugin {
@@ -30,18 +29,6 @@ public final class ParticleAPI extends JavaPlugin {
 
 	public static ParticleAPI getPlugin() {
 		return plugin;
-	}
-
-	public static void pointParticle(Location a, int setParticleID) {
-
-	}
-
-	public static void pointParticle(Location a, int timeInTick, int setParticleID) {
-
-	}
-
-	public static void getParticle(int ID) {
-
 	}
 
 	public static void consoleMsg(String text) {

@@ -19,29 +19,28 @@ public class MainCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			isPlayer = true;
 			player = (Player) sender;
-		} else
-			isPlayer = false;
+		} else {
+			ParticleAPI.consoleMsg(Formatter.FText("&c&lThis command is only for players"));
+			return true;
+		}
 		if (args.length > 0) {
 			switch (args[0].toLowerCase()) {
 			case "pointparticle":
-				if (!isPlayer) {
-					ParticleAPI.consoleMsg(Formatter.FText("&c&lEste comando no esta disponible para la consola"));
-					return true;
-				}
+				player.sendMessage(Formatter.FText("&c&lNot available"));
 				return true;
 			case "twopointparticle":
-				if (!isPlayer) {
-					ParticleAPI.consoleMsg(Formatter.FText("&c&lEste comando no esta disponible para la consola"));
-					return true;
-				}
-				if (args.length != 15) {
-					ParticleAPI.consoleMsg(Formatter.FText("&c&lFalta algun argumento"));
+				if (args.length < 15) {
+					player.sendMessage(Formatter.FText("&c&lSome argument is missing"));
 					return true;
 				}
 				Location location1 = new Location(player.getWorld(), Double.parseDouble(args[1]),
 						Double.parseDouble(args[2]), Double.parseDouble(args[3]));
 				Location location2 = new Location(player.getWorld(), Double.parseDouble(args[4]),
 						Double.parseDouble(args[5]), Double.parseDouble(args[6]));
+				if (args[1].equals(args[4]) && args[2].equals(args[5]) && args[3].equals(args[6])) {
+					player.sendMessage(
+							Formatter.FText("&c&lIs better use other method to spawn particle in same point"));
+				}
 				Particle particle = Particle.valueOf(args[7]);
 				int count = Integer.parseInt(args[8]);
 				double offsetX = Double.parseDouble(args[9]);
@@ -59,18 +58,10 @@ public class MainCommand implements CommandExecutor {
 			case "debug":
 				if (ParticleAPI.DebugMode) {
 					ParticleAPI.DebugMode = false;
-					if (isPlayer) {
-						player.sendMessage(Formatter.FText("&c&lDebug Mode Off", true, player));
-					} else {
-						ParticleAPI.consoleMsg(Formatter.FText("&c&lDebug Mode Off", true));
-					}
+					player.sendMessage(Formatter.FText("&c&lDebug Mode Off", true, player));
 				} else {
 					ParticleAPI.DebugMode = true;
-					if (isPlayer) {
-						player.sendMessage(Formatter.FText("&a&lDebug Mode On", true, player));
-					} else {
-						ParticleAPI.consoleMsg(Formatter.FText("&a&lDebug Mode On", true));
-					}
+					player.sendMessage(Formatter.FText("&a&lDebug Mode On", true, player));
 				}
 				return true;
 			default:
