@@ -1,9 +1,9 @@
-name: ParticleAPI
-version: ${project.version}
-main: guerrerocraft61.particleapi.ParticleAPI
-api-version: 1.16
-authors: [GuerreroCraft61]
-description: Simple Particle API
+main: ${mainClass}
+version: ${version}
+name: ${name}
+api-version: ${api-version}
+author: ${author}
+description: ${description}
 commands:
   particleapi:
     description: Main command

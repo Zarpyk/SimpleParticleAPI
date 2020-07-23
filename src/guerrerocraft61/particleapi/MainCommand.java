@@ -15,6 +15,7 @@ public class MainCommand implements CommandExecutor {
 	boolean isPlayer;
 	Player player;
 
+	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (sender instanceof Player) {
 			isPlayer = true;
