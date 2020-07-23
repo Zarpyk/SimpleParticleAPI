@@ -34,7 +34,7 @@ public class LineParticle {
 
 	/**
 	 * Default offset = 0
-	 * Default speed = 0.01
+	 * Default speed = 0.1
 	 * Default forceShow = false
 	 * Default movementSpeed = 0
 	 * 
@@ -44,12 +44,12 @@ public class LineParticle {
 	 * @param count    Particle count
 	 */
 	public LineParticle(Location a, Location b, Particle particle, int count) {
-		setVariables(a, b, particle, count, 0, 0, 0, 0.01, false, 0);
+		setVariables(a, b, particle, count, 0, 0, 0, 0.1, false, 0);
 		spawnParticle();
 	}
 
 	/**
-	 * Default speed = 0.01
+	 * Default speed = 0.1
 	 * Default forceShow = false
 	 * Default movementSpeed = 0
 	 * 
@@ -63,7 +63,7 @@ public class LineParticle {
 	 */
 	public LineParticle(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
 			double offsetZ) {
-		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, 0.01, false, 0);
+		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, 0.1, false, 0);
 		spawnParticle();
 	}
 
@@ -126,7 +126,7 @@ public class LineParticle {
 	}
 
 	/**
-	 * Default speed = 0.01
+	 * Default speed = 0.1
 	 * 
 	 * @param a             The first location
 	 * @param b             The second location
@@ -141,12 +141,12 @@ public class LineParticle {
 	 */
 	public LineParticle(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
 			double offsetZ, boolean forceShow, long movementSpeed) {
-		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, 0.01, forceShow, movementSpeed);
+		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, 0.1, forceShow, movementSpeed);
 		spawnParticle();
 	}
 
 	/**
-	 * Default speed = 0.01
+	 * Default speed = 0.1
 	 * Default forceShow = false
 	 * 
 	 * @param a             The first location
@@ -160,12 +160,12 @@ public class LineParticle {
 	 */
 	public LineParticle(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
 			double offsetZ, long movementSpeed) {
-		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, 0.01, false, movementSpeed);
+		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, 0.1, false, movementSpeed);
 		spawnParticle();
 	}
 
 	/**
-	 * Default speed = 0.01
+	 * Default speed = 0.1
 	 * Default movementSpeed = 0
 	 * 
 	 * @param a         The first location
@@ -180,7 +180,7 @@ public class LineParticle {
 	 */
 	public LineParticle(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
 			double offsetZ, boolean forceShow) {
-		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, 0.01, forceShow, 0);
+		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, 0.1, forceShow, 0);
 		spawnParticle();
 	}
 
@@ -237,7 +237,7 @@ public class LineParticle {
 
 	/**
 	 * Default offset = 0
-	 * Default speed = 0.01
+	 * Default speed = 0.1
 	 * 
 	 * @param a             The first location
 	 * @param b             The second location
@@ -248,7 +248,7 @@ public class LineParticle {
 	 * @param movementSpeed The speed in tick to spawn every particle
 	 */
 	public LineParticle(Location a, Location b, Particle particle, int count, boolean forceShow, long movementSpeed) {
-		setVariables(a, b, particle, count, 0, 0, 0, 0.01, forceShow, movementSpeed);
+		setVariables(a, b, particle, count, 0, 0, 0, 0.1, forceShow, movementSpeed);
 		spawnParticle();
 	}
 
@@ -270,7 +270,7 @@ public class LineParticle {
 
 	/**
 	 * Default offset = 0
-	 * Default speed = 0.01
+	 * Default speed = 0.1
 	 * Default forceShow = false
 	 * 
 	 * @param a             The first location
@@ -280,13 +280,13 @@ public class LineParticle {
 	 * @param movementSpeed The speed in tick to spawn every particle
 	 */
 	public LineParticle(Location a, Location b, Particle particle, int count, long movementSpeed) {
-		setVariables(a, b, particle, count, 0, 0, 0, 0.01, false, movementSpeed);
+		setVariables(a, b, particle, count, 0, 0, 0, 0.1, false, movementSpeed);
 		spawnParticle();
 	}
 
 	/**
 	 * Default offset = 0
-	 * Default speed = 0.01
+	 * Default speed = 0.1
 	 * Default movementSpeed = 0
 	 * 
 	 * @param a         The first location
@@ -297,7 +297,7 @@ public class LineParticle {
 	 *                  and when player have minimal particle settings
 	 */
 	public LineParticle(Location a, Location b, Particle particle, int count, boolean forceShow) {
-		setVariables(a, b, particle, count, 0, 0, 0, 0.01, forceShow, 0);
+		setVariables(a, b, particle, count, 0, 0, 0, 0.1, forceShow, 0);
 		spawnParticle();
 	}
 
@@ -321,7 +321,8 @@ public class LineParticle {
 	}
 
 	/**
-	 * If you don't know how to use this, use the block/item/redstone method
+	 * If you don't know how to use data, you can use the block/item/redstone method
+	 * adding materialName or color and size
 	 * 
 	 * @param a             The first location
 	 * @param b             The second location
@@ -340,7 +341,23 @@ public class LineParticle {
 	public <T> LineParticle(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
 			double offsetZ, double speed, boolean forceShow, long movementSpeed, @Nullable T data) {
 		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, speed, forceShow, movementSpeed);
-		spawnParticle();
+		double initialDistance = getA().distance(getB());
+		Vector direction = VectorMath.directionVector(this.a, this.b);
+		new BukkitRunnable() {
+			public void run() {
+				ParticleAPI.debug("Initial: " + initialDistance);
+				ParticleAPI.debug("a/b distance: " + getA().distance(getB()));
+				if (getA().distance(getB()) < 1 || getA().distance(getB()) > initialDistance) {
+					cancel();
+				}
+				getA().getWorld().spawnParticle(getParticle(), getA(), getCount(), getOffsetX(), getOffsetY(),
+						getOffsetZ(), getSpeed(), data, isForceShow());
+				double x = direction.getX();
+				double y = direction.getY();
+				double z = direction.getZ();
+				getA().add(x, y, z);
+			}
+		}.runTaskTimer(ParticleAPI.getPlugin(), 0, getMovementSpeed());
 	}
 
 	/**
@@ -360,14 +377,16 @@ public class LineParticle {
 	 */
 	public LineParticle(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
 			double offsetZ, double speed, boolean forceShow, long movementSpeed, String materialName) {
-		if (particle == Particle.BLOCK_CRACK || particle == Particle.BLOCK_DUST || particle == Particle.ITEM_CRACK) {
+		if (particle == Particle.BLOCK_CRACK || particle == Particle.BLOCK_DUST || particle == Particle.FALLING_DUST
+				|| particle == Particle.ITEM_CRACK) {
 			setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, speed, forceShow, movementSpeed);
 			this.materialName = materialName;
 			double initialDistance = getA().distance(getB());
 			Vector direction = VectorMath.directionVector(this.a, this.b);
 			BlockData bd = null;
 			ItemStack is = null;
-			if (particle == Particle.BLOCK_CRACK || particle == Particle.BLOCK_DUST) {
+			if (particle == Particle.BLOCK_CRACK || particle == Particle.BLOCK_DUST
+					|| particle == Particle.FALLING_DUST) {
 				bd = Objects.requireNonNull(Material.getMaterial(getMaterialName())).createBlockData();
 			} else {
 				is = new ItemStack(Objects.requireNonNull(Material.getMaterial(getMaterialName())));
@@ -381,7 +400,8 @@ public class LineParticle {
 					if (getA().distance(getB()) < 1 || getA().distance(getB()) > initialDistance) {
 						cancel();
 					}
-					if (particle == Particle.BLOCK_CRACK || particle == Particle.BLOCK_DUST) {
+					if (particle == Particle.BLOCK_CRACK || particle == Particle.BLOCK_DUST
+							|| particle == Particle.FALLING_DUST) {
 						getA().getWorld().spawnParticle(getParticle(), getA(), getCount(), getOffsetX(), getOffsetY(),
 								getOffsetZ(), getSpeed(), finalBd, isForceShow());
 					} else {

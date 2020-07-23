@@ -38,7 +38,7 @@ public class MainCommandCompleter implements TabCompleter {
 					return Collections.singletonList(targ.getZ() + "");
 				}
 				return null;
-			} else if (args[0].equals("twopointparticle")) {
+			} else if (args[0].equals("lineparticle")) {
 				Player player = (Player) sender;
 				Block targ = player.getTargetBlock(null, 5);
 				switch (args.length) {
@@ -84,9 +84,10 @@ public class MainCommandCompleter implements TabCompleter {
 					movementSpeed.add("movementSpeed");
 					return movementSpeed;
 				case 16:
-					switch (args[9]) {
+					switch (args[7]) {
 					case "BLOCK_CRACK":
 					case "BLOCK_DUST":
+					case "FALLING_DUST":
 						return blockList();
 					case "ITEM_CRACK":
 						return itemList();
@@ -96,19 +97,19 @@ public class MainCommandCompleter implements TabCompleter {
 						return colorRed;
 					}
 				case 17:
-					if (args[9].equals("REDSTONE")) {
+					if (args[7].equals("REDSTONE")) {
 						List<String> colorGreen = numberList();
 						colorGreen.add("GreenColor1-255");
 						return colorGreen;
 					}
 				case 18:
-					if (args[9].equals("REDSTONE")) {
+					if (args[7].equals("REDSTONE")) {
 						List<String> colorBlue = numberList();
 						colorBlue.add("BlueColor1-255");
 						return colorBlue;
 					}
 				case 19:
-					if (args[9].equals("REDSTONE")) {
+					if (args[7].equals("REDSTONE")) {
 						List<String> colorBlue = numberList();
 						colorBlue.add("Size");
 						return colorBlue;

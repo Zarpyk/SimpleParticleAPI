@@ -1,14 +1,15 @@
 package guerrerocraft61.particleapi;
 
-import net.md_5.bungee.api.ChatColor;
-import org.bukkit.entity.Player;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.bukkit.entity.Player;
+
+import net.md_5.bungee.api.ChatColor;
+
 public class Formatter {
 
-	private static final String prefix = "&c[&eParticleAPI&c]";
+	private static final String prefix = "&c[&eParticleAPI&c] ";
 	private static final Pattern pattern = Pattern.compile("(?<!\\\\)(#[a-fA-F0-9]{6})");
 
 	public static String FText(String text) {
