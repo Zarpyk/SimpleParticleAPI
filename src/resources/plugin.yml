@@ -1,0 +1,11 @@
+name: ParticleAPI
+version: ${project.version}
+main: guerrerocraft61.particleapi.ParticleAPI
+api-version: 1.16
+authors: [GuerreroCraft61]
+description: Simple Particle API
+commands:
+  particleapi:
+    description: Main command
+    aliases: [particle, papi]
+    usage: /particleapi <subcomando>
