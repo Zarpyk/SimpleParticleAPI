@@ -6,9 +6,8 @@
 
     <groupId>GuerreroCraft61</groupId>
     <artifactId>ParticleAPI</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <packaging>jar</packaging>
-
     <name>ParticleAPI</name>
 
     <description>Simple Particle API</description>
@@ -19,7 +18,6 @@
         <mainClass>guerrerocraft61.particleapi.ParticleAPI</mainClass>
         <api-version>1.16</api-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.javadoc.skip>false</maven.javadoc.skip>
     </properties>
 
     <profiles>
@@ -68,6 +66,28 @@
                 <version>3.2.0</version>
                 <configuration>
                     <outputDirectory>F:\Users\GuerreroCraft61\Desktop\TnTServer\Server\plugins</outputDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <show>public</show>
+                    <windowtitle>ParticleAPI</windowtitle>
+                    <verbose>false</verbose>
+                    <author>true</author>
+                    <version>true</version>
+                    <linksource>true</linksource>
+                    <notimestamp>true</notimestamp>
+                    <bottom><![CDATA[<b>GuerreroCraft61, 2020</b>]]></bottom>
+                    <reportOutputDirectory>${project.build.directory}</reportOutputDirectory>
+                    <destDir>javadoc-latest</destDir>
                 </configuration>
             </plugin>
         </plugins>
