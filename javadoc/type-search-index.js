@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"guerrerocraft61.particleapi.particletypes","l":"LineParticle"},{"p":"guerrerocraft61.particleapi","l":"ParticleAPI"}]
