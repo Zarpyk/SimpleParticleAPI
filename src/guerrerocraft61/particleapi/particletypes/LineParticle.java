@@ -11,6 +11,7 @@ import org.bukkit.Particle;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
 import guerrerocraft61.particleapi.Formatter;
@@ -31,6 +32,8 @@ public class LineParticle {
 	public String materialName;
 	public Color particleColor;
 	public int size;
+	public BukkitTask bukkitTask;
+	public boolean taskStarted;
 
 	/**
 	 * Default offset = 0
@@ -345,8 +348,9 @@ public class LineParticle {
 		setVariables(a, b, particle, count, offsetX, offsetY, offsetZ, speed, forceShow, movementSpeed);
 		double initialDistance = getA().distance(getB());
 		Vector direction = VectorMath.directionVector(this.a, this.b);
-		new BukkitRunnable() {
+		bukkitTask = new BukkitRunnable() {
 			public void run() {
+				taskStarted = true;
 				ParticleAPI.debug("Initial: " + initialDistance);
 				ParticleAPI.debug("a/b distance: " + getA().distance(getB()));
 				if (getA().distance(getB()) < 1 || getA().distance(getB()) > initialDistance) {
@@ -395,8 +399,9 @@ public class LineParticle {
 			}
 			BlockData finalBd = bd;
 			ItemStack finalIs = is;
-			new BukkitRunnable() {
+			bukkitTask = new BukkitRunnable() {
 				public void run() {
+					taskStarted = true;
 					ParticleAPI.debug("Initial: " + initialDistance);
 					ParticleAPI.debug("a/b distance: " + getA().distance(getB()));
 					if (getA().distance(getB()) < 1 || getA().distance(getB()) > initialDistance) {
@@ -445,8 +450,9 @@ public class LineParticle {
 			this.size = size;
 			double initialDistance = getA().distance(getB());
 			Vector direction = VectorMath.directionVector(this.a, this.b);
-			new BukkitRunnable() {
+			bukkitTask = new BukkitRunnable() {
 				public void run() {
+					taskStarted = true;
 					ParticleAPI.debug("Initial: " + initialDistance);
 					ParticleAPI.debug("a/b distance: " + getA().distance(getB()));
 					if (getA().distance(getB()) < 1 || getA().distance(getB()) > initialDistance) {
@@ -489,8 +495,9 @@ public class LineParticle {
 	private void spawnParticle() {
 		double initialDistance = getA().distance(getB());
 		Vector direction = VectorMath.directionVector(this.a, this.b);
-		new BukkitRunnable() {
+		bukkitTask = new BukkitRunnable() {
 			public void run() {
+				taskStarted = true;
 				ParticleAPI.debug("Initial: " + initialDistance);
 				ParticleAPI.debug("a/b distance: " + getA().distance(getB()));
 				if (getA().distance(getB()) < 1 || getA().distance(getB()) > initialDistance) {
