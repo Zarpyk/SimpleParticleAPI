@@ -31,7 +31,7 @@
 
     <build>
         <sourceDirectory>src</sourceDirectory>
-        <defaultGoal>clean install</defaultGoal>
+        <defaultGoal>clean javadoc:jar install</defaultGoal>
         <resources>
             <resource>
                 <directory>src/resources</directory>
