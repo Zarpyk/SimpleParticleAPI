@@ -16,7 +16,7 @@ To use it, add this to you pom.xml
         <dependency>
             <groupId>com.github.GuerreroCraft61</groupId>
             <artifactId>SimpleParticleAPI</artifactId>
-            <version>latest</version>
+            <version>Last version</version>
             <scope>provided</scope>
         </dependency>
         <!--Others dependencies... -->
