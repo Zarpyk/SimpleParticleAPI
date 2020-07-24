@@ -25,6 +25,16 @@
             <id>ServerDir</id>
             <build>
                 <directory>F:\Users\GuerreroCraft61\Desktop\TnTServer\ParticleAPI</directory>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>3.2.0</version>
+                        <configuration>
+                            <outputDirectory>F:\Users\GuerreroCraft61\Desktop\TnTServer\Server\plugins</outputDirectory>
+                        </configuration>
+                    </plugin>
+                </plugins>
             </build>
         </profile>
     </profiles>
@@ -58,14 +68,6 @@
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <outputDirectory>F:\Users\GuerreroCraft61\Desktop\TnTServer\Server\plugins</outputDirectory>
                 </configuration>
             </plugin>
             <plugin>
