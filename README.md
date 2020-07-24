@@ -27,7 +27,7 @@ To use it, add this to you pom.xml (Maven)
     </dependencies>
 Last version: ![Release](https://jitpack.io/v/GuerreroCraft61/SimpleParticleAPI.svg)
 
-Todo List:
+## Todo List:
 - [ ] PointParticle
 - [x] LineParticle
 - [ ] CicleParticle
