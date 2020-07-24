@@ -6,7 +6,7 @@
 
     <groupId>GuerreroCraft61</groupId>
     <artifactId>ParticleAPI</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
 
     <name>ParticleAPI</name>
@@ -19,6 +19,7 @@
         <mainClass>guerrerocraft61.particleapi.ParticleAPI</mainClass>
         <api-version>1.16</api-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.javadoc.skip>false</maven.javadoc.skip>
     </properties>
 
     <profiles>
@@ -47,7 +48,6 @@
                 <!-- Keep filtering at false for other resources to prevent bad magic -->
                 <filtering>false</filtering>
                 <excludes>
-                    <exclude>**/*.java</exclude>
                     <exclude>plugin.yml</exclude>
                 </excludes>
             </resource>
@@ -61,19 +61,6 @@
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
