@@ -484,12 +484,8 @@ public class LineParticle {
 		this.speed = speed;
 		this.movementSpeed = movementSpeed;
 		this.forceShow = forceShow;
-		this.a.setX(getA().getX() + 0.5);
-		this.b.setX(getB().getX() + 0.5);
 		this.a.setY(getA().getY() + 0.5);
 		this.b.setY(getB().getY() + 0.5);
-		this.a.setZ(getA().getZ() + 0.5);
-		this.b.setZ(getB().getZ() + 0.5);
 	}
 
 	private void spawnParticle() {
