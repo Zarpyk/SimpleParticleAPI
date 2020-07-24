@@ -20,4 +20,4 @@ To use it, add this to you pom.xml
         </dependency>
         <!--Others dependencies... -->
     </dependencies>
-[![GitHub version](https://badge.fury.io/gh/GuerreroCraft61%2FSimpleParticleAPI.svg)](https://badge.fury.io/gh/GuerreroCraft61%2FSimpleParticleAPI)
+Last version: ![Release](https://jitpack.io/v/GuerreroCraft61/SimpleParticleAPI.svg)
