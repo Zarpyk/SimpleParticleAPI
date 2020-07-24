@@ -1,6 +1,10 @@
 # SimpleParticleAPI
+## For server owners
+Add last version jar to you plugin folder
+## For devs
+Javadoc: https://javadoc.jitpack.io/com/github/GuerreroCraft61/SimpleParticleAPI/latest/javadoc/
 
-To use it, add this to you pom.xml
+To use it, add this to you pom.xml (Maven)
 >
     <repositories>
         <!--Others repositories... -->
