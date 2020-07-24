@@ -324,6 +324,8 @@ public class LineParticle {
 	 * If you don't know how to use data, you can use the block/item/redstone method
 	 * adding materialName or color and size
 	 * 
+	 * @param <T>           Type of particle data, see Particle.getDataType()
+	 *                      (Bukkit)
 	 * @param a             The first location
 	 * @param b             The second location
 	 * @param particle      Particle type
@@ -361,6 +363,7 @@ public class LineParticle {
 	}
 
 	/**
+	 * This is used for Block/Item Particles
 	 * @param a             The first location
 	 * @param b             The second location
 	 * @param particle      Particle type
@@ -373,7 +376,6 @@ public class LineParticle {
 	 *                      and when player have minimal particle settings
 	 * @param movementSpeed The speed in tick to spawn every particle
 	 * @param materialName  The material name
-	 * @apiNote This is used for Block/Item Particles
 	 */
 	public LineParticle(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
 			double offsetZ, double speed, boolean forceShow, long movementSpeed, String materialName) {
@@ -420,6 +422,7 @@ public class LineParticle {
 	}
 
 	/**
+	 * This is used for Redstone Particle
 	 * @param a             The first location
 	 * @param b             The second location
 	 * @param particle      Particle type
@@ -433,7 +436,6 @@ public class LineParticle {
 	 * @param movementSpeed The speed in tick to spawn every particle
 	 * @param color         The redstone dust color
 	 * @param size          The redstone dust size
-	 * @apiNote This is used for Redstone Particle
 	 */
 	public LineParticle(Location a, Location b, Particle particle, int count, double offsetX, double offsetY,
 			double offsetZ, double speed, boolean forceShow, long movementSpeed, Color color, int size) {
