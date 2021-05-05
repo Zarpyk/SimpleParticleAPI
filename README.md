@@ -1,4 +1,5 @@
-# SimpleParticleAPI (Abandoned - You are free to use the code and make your own plugin)
+# SimpleParticleAPI
+# (Abandoned - You are free to use the code and make your own plugin)
 ## For server owners
 Add last version jar to you plugin folder
 ## For devs
